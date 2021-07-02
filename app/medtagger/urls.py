@@ -1,4 +1,4 @@
-"""app URL Configuration
+"""medtagger URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -14,16 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls.static import static
-from django.conf import settings
+from django.urls import path, include
+from . import views
+from medtagger.views import TagAutocomplete
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', views.index, name="index"),
+    path('articleDetails/<int:pk>', views.articleDetails, name='articleDetails'),
+    path('accounts/', include('accounts.urls')),
+    path('tags/', views.tags, name='tags'),
+    path('tag-autocomplete/', TagAutocomplete.as_view(), name='tag-autocomplete'),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(
-        settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT,
-    )

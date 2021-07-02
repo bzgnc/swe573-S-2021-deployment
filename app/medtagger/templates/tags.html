@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+    <div class="container">
+        <h3 class="lead">Used Tags</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Q code</th>
+                <th>Label</th>
+                <th>Description</th>
+
+            </tr>
+            {% for item in tags %}
+                <tr>
+                    <td><a href="{% url 'articleDetails' item.id %}">{{ item.id }}</a></td>
+                    <td><a href="https://www.wikidata.org/wiki/{{ item.WikiID }}">{{ item.WikiID }}</a></td>
+                    <td>{{ item.Label }}</td>
+                    <td>{{ item.Description }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
