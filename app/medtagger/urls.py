@@ -20,8 +20,10 @@ from medtagger.views import TagAutocomplete
 
 urlpatterns = [
     path('', views.index, name="index"),
+    path('admin/', admin.site.urls),
     path('articleDetails/<int:pk>', views.articleDetails, name='articleDetails'),
     path('accounts/', include('accounts.urls')),
     path('tags/', views.tags, name='tags'),
     path('tag-autocomplete/', TagAutocomplete.as_view(), name='tag-autocomplete'),
+    path('theget/', views.theget, name='theget'),
 ]

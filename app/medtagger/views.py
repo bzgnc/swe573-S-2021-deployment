@@ -12,6 +12,7 @@ from medtagger.models import Article, Author, Tag, Keyword
 from medtagger.Wikiman import getLabelSuggestion, WikiEntry
 from django.db.models import F, CharField, Value
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from medtagger.downloadArticles import getArticles
 
 
 @login_required(login_url="/accounts/login/")
@@ -121,4 +122,8 @@ def tags(request):
 
     return render(request, 'tags.html',
                   context={'tags': tags})
+
+def theget(request):
+    getArticles('catatonic schizophrenia', '10000')
+    return HttpResponse('It is all ok!')
 

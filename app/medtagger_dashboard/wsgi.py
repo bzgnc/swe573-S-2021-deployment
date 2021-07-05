@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 
 import os
 #import sys
-import django
+#import django
 
 from django.core.wsgi import get_wsgi_application
 
@@ -20,6 +20,6 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'medtagger_dashboard.settings')
 
 #django.setup()
 
-#getArticles('catatonic schizophrenia', '50000')
+#getArticles('catatonic schizophrenia', '200')
 
 application = get_wsgi_application()
